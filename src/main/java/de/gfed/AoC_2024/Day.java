@@ -1,6 +1,5 @@
 package de.gfed.AoC_2024;
 
-import de.gfed.AoC_2024.AoCInputConnector;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,11 +10,11 @@ public abstract class Day {
     private boolean debugMode;
     AoCInputConnector inputConnector;
     private int day;
-    List<String> input;
-    List<String> example;
-    long[] expectations =new long[]{0,0};
+    protected List<String> input;
+    protected List<String> example;
+    protected long[] expectations =new long[]{0,0};
 
-    Day(boolean debugMode, AoCInputConnector inputConnector, int day){
+    protected Day(boolean debugMode, AoCInputConnector inputConnector, int day){
         this.debugMode=debugMode;
         this.inputConnector=inputConnector;
         this.day=day;
