@@ -3,65 +3,68 @@ package de.gfed.AoC_2024.days;
 import de.gfed.AoC_2024.AoCInputConnector;
 import de.gfed.AoC_2024.Day;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.*;
 
 public class DayOne extends Day {
 
-    DayOne(boolean debugMode, AoCInputConnector inputConnector) {
+    public DayOne(boolean debugMode, AoCInputConnector inputConnector) {
         super(debugMode, inputConnector, 1);
-        expectations=new long[]{54081,54649};
+        expectations=new long[]{3714264,18805872};
         example = Arrays.asList(
-                "2xjzgsjzfhzhm1",
-                "qhklfjd39rpjxhqtftwopfvrrj2eight",
-                "95btwo");
-
-        //Concat the first and last digits of a line and add them together across multiple lines
-        //Part 2: Ooops "eight etc.",... is also a number!
-
+                "3   4",
+                "4   3",
+                "2   5",
+                "1   3",
+                "3   9",
+                "3   3");
+        /*
+        Part 1: Each line consists of two columns. Get the columns, sort asc, add the distances
+        (difference of the columns per row).
+        Part 2: Add the similarity score (item in the left column * number of occurrence in the right column)
+        not the distance.
+         */
     }
 
     @Override
     protected long evalInput(boolean bPart2) {
-        if (bPart2)
-            input.replaceAll(this::replaceWords);
-        return input.stream().mapToInt(this::digitsInLine).sum();
-    }
+        long result =0;
 
-    private  int digitsInLine(String line){
-        Pattern digitRegex = Pattern.compile("\\d");
-        Matcher digitMatcher = digitRegex.matcher(line);
-        if (!digitMatcher.find())
-            return 0;
-        int firstDigit= Integer.parseInt(digitMatcher.group().substring(0,1));
-        int lastDigit = firstDigit;
-        while (digitMatcher.find()) {
-            lastDigit=Integer.parseInt(digitMatcher.group().substring(0,1));
+        List<Long> leftInput= new java.util.ArrayList<>(input.stream().mapToLong(
+                item -> Long.parseLong(item.split(" {3}")[0]))
+                .boxed().toList());
+
+        List<Long> rightInput= new java.util.ArrayList<>(input.stream().mapToLong(
+                        item -> Long.parseLong(item.split(" {3}")[1]))
+                .boxed().toList());
+
+        if (bPart2) {
+            Map<Long, Long> occurrences = countOccurrences(rightInput);
+            for (int i = 0; i < leftInput.size(); i++) {
+                result+=leftInput.get(i) *
+                        (!occurrences.containsKey(leftInput.get(i)) ? 0:occurrences.get(leftInput.get(i))
+                        );
+            }
+            return result;
         }
-        return firstDigit * 10 + lastDigit;
-    }
-    private  String replaceWords(String line){
-        Map<String, String> dict= new HashMap<>();
-        //The numbers can be combined ("oneight"), so the beginning and the end must (sometimes) be saved
-        dict.put("one", "o1e");
-        dict.put("two", "t2o");
-        dict.put("three", "t3e");
-        dict.put("four", "f4r");
-        dict.put("five", "f5e");
-        dict.put("six", "s6x");
-        dict.put("seven", "s7n");
-        dict.put("eight", "e8t");
-        dict.put("nine", "n9e");
 
-        String result = line;
-        for (Map.Entry<String, String> entry : dict.entrySet()) {
-            result = result.replaceAll(entry.getKey(), entry.getValue());
+        leftInput.sort(Long::compareTo);
+        rightInput.sort(Long::compareTo);
+        for (int i = 0; i < leftInput.size(); i++) {
+            result += Math.abs(rightInput.get(i) - leftInput.get(i));
         }
         return result;
     }
 
+    private Map<Long,Long> countOccurrences(List<Long> input){
+        Map<Long,Long> result = new HashMap<>();
+        input.forEach(item ->{
+            if (!result.containsKey(item)){
+                result.put(item, input.stream().filter(i -> Objects.equals(i, item)).count());
+            }
+        });
+
+        return result;
+
+    }
 
 }
