@@ -2,6 +2,7 @@ package de.gfed.AoC_2024;
 
 
 import de.gfed.AoC_2024.days.DayOne;
+import de.gfed.AoC_2024.days.DayTwo;
 
 public class AoCMain {
     public static void main(String[] args) {
@@ -11,8 +12,8 @@ public class AoCMain {
         boolean checkAll = false;
 
         Day[] days = new Day[]{
-                new DayOne(isDebug, inputConnector) /*,
-                new DayTwo(isDebug, inputConnector),
+                new DayOne(isDebug, inputConnector) ,
+                new DayTwo(isDebug, inputConnector)/*,
                 new DayThree(isDebug, inputConnector),
                 new DayFour(isDebug, inputConnector),
                 new DayFive(isDebug, inputConnector),
