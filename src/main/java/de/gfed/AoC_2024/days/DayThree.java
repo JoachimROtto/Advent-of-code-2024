@@ -7,7 +7,6 @@ import java.util.*;
 
 public class DayThree extends Day {
 
-
     public DayThree(boolean debugMode, AoCInputConnector inputConnector) {
         super(debugMode, inputConnector, 3);
         expectations=new long[]{188192787,113965544};
@@ -23,7 +22,10 @@ public class DayThree extends Day {
     protected long evalInput(boolean bPart2) {
         long result =0;
 
-        String inputInOneLine=filterInput(input, bPart2);
+        String inputInOneLine = bPart2
+                ? filterInput(mergeLines(input))
+                : mergeLines(input);
+
         String[] multis = inputInOneLine.split("mul");
         for (int i = 1; i < multis.length; i++) {
             result+=tryMultiply(multis[i]);
@@ -44,33 +46,20 @@ public class DayThree extends Day {
         }
     }
 
-    private String filterInput(List<String> input, boolean bPart2){
-        boolean multiColumnDONT=false;
+    protected String mergeLines(List<String> input){
         StringBuilder result = new StringBuilder();
+        for (int i = 0; i < input.size(); i++)
+            result.append(input.get(i));
+        return result.toString();
+    }
 
-        if (!bPart2){
-            for (int i = 0; i < input.size(); i++)
-                result.append(input.get(i));
-            return result.toString();
-        }
-
-        for (int i = 0; i < input.size(); i++) {
-            String[] particles = input.get(i).split("don't()");
-            if ( !multiColumnDONT ){
-                result.append(particles[0]);
-            } else {
-                if (particles[0].contains("do()")){
-                    result.append(particles[0].substring(particles[0].indexOf("do()")));
-                    }
+    private String filterInput(String input){
+        String[] particles = input.split("don't()");
+        StringBuilder result = new StringBuilder(particles[0]);
+        for (int j = 1; j < particles.length; j++) {
+            if (particles[j].contains("do()"))
+                result.append(particles[j].substring(particles[j].indexOf("do()")));
             }
-            multiColumnDONT =!input.get(i).contains("do()");
-            for (int j = 1; j < particles.length; j++) {
-                if (particles[j].contains("do()"))
-                    result.append(particles[j].substring(particles[j].indexOf("do()")));
-            }
-            if (!particles[particles.length-1].contains("do()"))
-                multiColumnDONT =true;
-        }
         return result.toString();
     }
 
