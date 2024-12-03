@@ -63,4 +63,12 @@ public abstract class Day {
                 .map(Long::parseLong).collect(Collectors.toList());
     }
 
+    protected String mergeLines(List<String> input){
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < input.size(); i++)
+            result.append(input.get(i));
+        return result.toString();
+    }
+
+
 }
