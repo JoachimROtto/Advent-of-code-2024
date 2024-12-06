@@ -33,14 +33,6 @@ public class DayFour extends Day {
         return findXMAS(charMap,bPart2);
     }
 
-    private char[][] List2CharArray(List<String> input){
-        char [][] result = new char[input.size()][input.getFirst().length()];
-        for (int i = 0; i < input.size(); i++) {
-            result[i]=input.get(i).toCharArray();
-        }
-        return result;
-    }
-
     private int findXMAS(char [][] charMap, boolean bPart2){
         int result = 0;
         char target = bPart2?'M': 'X';

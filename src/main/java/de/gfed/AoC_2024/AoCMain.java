@@ -1,23 +1,23 @@
 package de.gfed.AoC_2024;
 
 
-import de.gfed.AoC_2024.days.DayOne;
-import de.gfed.AoC_2024.days.DayThree;
-import de.gfed.AoC_2024.days.DayTwo;
+import de.gfed.AoC_2024.days.*;
 
 public class AoCMain {
     public static void main(String[] args) {
         AoCInputConnector inputConnector = new AoCInputConnector();
 
-        boolean isDebug = false;
+        boolean isDebug = true;
         boolean checkAll = false;
+
+        isDebug=false;
 
         Day[] days = new Day[]{
                 new DayOne(isDebug, inputConnector) ,
                 new DayTwo(isDebug, inputConnector),
-                new DayThree(isDebug, inputConnector)/*,
+                new DayThree(isDebug, inputConnector),
                 new DayFour(isDebug, inputConnector),
-                new DayFive(isDebug, inputConnector),
+                new DayFive(isDebug, inputConnector)/*,
                 new DaySix(isDebug, inputConnector),
                 new DaySeven(isDebug, inputConnector),
                 new DayEight(isDebug, inputConnector),
