@@ -70,7 +70,7 @@ public abstract class Day {
         return result.toString();
     }
 
-    protected char[][] List2CharArray(List<String> input){
+    protected char[][] list2CharArray(List<String> input){
         char [][] result = new char[input.size()][input.getFirst().length()];
         for (int i = 0; i < input.size(); i++) {
             result[i]=input.get(i).toCharArray();

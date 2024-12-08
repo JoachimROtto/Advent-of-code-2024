@@ -39,7 +39,7 @@ public class DayEight extends Day {
 
     private long eval(boolean bPart2){
         Set <String> occurrences= new HashSet<>();
-        char[][] map=List2CharArray(input);
+        char[][] map=list2CharArray(input);
         for (int i=0; i< map.length;i++){
             for (int j=0; j< map[0].length; j++){
                 if (map[i][j]!='.' ){

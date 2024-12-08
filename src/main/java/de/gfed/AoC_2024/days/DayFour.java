@@ -29,7 +29,7 @@ public class DayFour extends Day {
 
     @Override
     protected long evalInput(boolean bPart2) {
-        char[][] charMap=List2CharArray(input);
+        char[][] charMap=list2CharArray(input);
         return findXMAS(charMap,bPart2);
     }
 
