@@ -78,4 +78,16 @@ public abstract class Day {
         return result;
     }
 
+    protected int[][] list2IntArray(List<String> input) {
+        char[] line;
+        int[][] result = new int[input.size()][input.getFirst().length()];
+        for (int i = 0; i < input.size(); i++) {
+            line = input.get(i).toCharArray();
+            for (int j = 0; j < line.length; j++) {
+                result[i][j] = Integer.parseInt(line[j] + "");
+            }
+        }
+        return result;
+    }
+
 }
