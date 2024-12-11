@@ -21,7 +21,7 @@ public class DayTwo extends Day {
         /*
         Part 1: Each line consists of levels. A line is safe if the levels increase or decrease the whole line
         and by a difference of only 1-3.
-        Part 2: Tolerate a single transition (by removing! Only a changed/missing direction can be fixed).
+        Part 2: Tolerate a single transition (by removing! Only one changed/missing direction can be fixed).
          */
     }
 
