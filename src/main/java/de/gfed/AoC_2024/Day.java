@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import java.util.*;
 
 public abstract class Day {
-    private boolean debugMode;
+    protected boolean debugMode;
     AoCInputConnector inputConnector;
     private int day;
     protected List<String> input;
