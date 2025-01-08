@@ -27,11 +27,11 @@ public class DayFourteen extends Day {
                 "p=2,4 v=2,-3",
                 "p=9,5 v=-3,-3");
         /*
-        Part 1: Your input is one line of Blocks that alternate between the size of a file and a gap. Fill
-        the gaps starting on the left with files starting from the right, Fragmentation is allowed. Build a
-        checksum with the Position of each used Slot * former position of using file. Skip the gaps.
-        (23312 = 00...111.22 ->0022111... = 0*0 + 1* + 3*2..)
-        Part 2: Fragmentation is not allowed! Once again.
+        Part 1: Your input is a list of robots with their position (x,y) and velocity (dx, dy) per second.
+        If they leave the map they enter at the opposite site. Calculate the positions after 100 seconds.
+        Multiply the number of robots in each quadrant.
+        Part 2: From time to time some of the robots form a Christmas Tree. When does this occur for the
+        first time?
          */
     }
 
@@ -89,9 +89,6 @@ public class DayFourteen extends Day {
         }
         if (!isCandidate)
             return false;
-        for (int i = 0; i < map.length; i++) {
-            System.out.println(Arrays.toString(map[i]));
-        }
         return true;
     }
 
