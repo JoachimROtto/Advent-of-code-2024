@@ -42,8 +42,10 @@ public class DayFive extends Day {
                 "61,13,29",
                 "97,13,75,29,47");
         /*
-        Part 1: Extract correct multiplication (mul(number,number)) and add up.
-        Part 2: Upcoming don't() disables, upcoming do() enables multiplication.
+        Part 1: The input is on block with ordering rules and another with page numbers. 47|13 means
+        47 must be before 13 and 12, 34, 13, 47 violates this rule. Find rows that are in the right order.
+        Sum the middle page numbers.
+        Part 2: Order the pages and sum again.
          */
     }
 
