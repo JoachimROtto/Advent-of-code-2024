@@ -89,5 +89,12 @@ public abstract class Day {
         }
         return result;
     }
+    protected int[] findGuard(List<String> input, char target) {
+        for (int i = 0; i < input.size(); i++) {
+            if ( input.get(i).contains(target+"") )
+                return new int[]{i, input.get(i).indexOf(target+"")};
+        }
+        return new int[]{-1, -1};
+    }
 
 }

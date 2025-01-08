@@ -35,7 +35,7 @@ public class DaySix extends Day {
     protected long evalInput(boolean bPart2) {
         return bPart2 ?
                 evalPart2() :
-                lengthOfFoundPath(list2CharArray(input), findGuard(input), Direction.NORTH, 2);
+                lengthOfFoundPath(list2CharArray(input), findGuard(input,'^'), Direction.NORTH, 2);
     }
 
     private long lengthOfFoundPath(char[][] input, int[] position, Direction direction, long currentLength) {
@@ -60,7 +60,7 @@ public class DaySix extends Day {
 
     private long evalPart2() {
         char[][] walk = list2CharArray(input);
-        int[] guard = findGuard(input);
+        int[] guard = findGuard(input, '^');
         lengthOfFoundPath(walk, guard, Direction.NORTH, 2);
         char[][] map;
         long result = 0;
@@ -79,13 +79,6 @@ public class DaySix extends Day {
         return result;
     }
 
-    private int[] findGuard(List<String> input) {
-        for (int i = 0; i < input.size(); i++) {
-            if ( input.get(i).contains("^") )
-                return new int[]{i, input.get(i).indexOf("^")};
-        }
-        return new int[]{-1, -1};
-    }
 
     private Direction nextDirection(Direction direction) {
         return Direction.values()[(Integer.parseInt(dir2Char(direction) + "")) % 4];
