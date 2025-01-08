@@ -12,22 +12,7 @@ public class DayTwentyFive extends Day {
     public DayTwentyFive(boolean debugMode, AoCInputConnector inputConnector) {
         super(debugMode, inputConnector, 25);
         expectations=new long[]{3196,0};
-        example = Arrays.asList(
-                "###############",
-                "#...#...#.....#",
-                "#.#.#.#.#.###.#",
-                "#S#...#.#.#...#",
-                "#######.#.#.###",
-                "#######.#.#...#",
-                "#######.#.###.#",
-                "###..E#...#...#",
-                "###.#######.###",
-                "#...###...#...#",
-                "#.#####.#.###.#",
-                "#.#...#.#.#...#",
-                "#.#.#.#.#.#.###",
-                "#...#...#...###",
-                "###############");
+        example = Arrays.asList("");
 
         /*
         Part 1: You have a list of blocks consisting of . and #. A full (#) row at the top marks a lock
