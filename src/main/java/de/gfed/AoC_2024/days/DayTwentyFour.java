@@ -56,8 +56,8 @@ public class DayTwentyFour extends Day {
                     substitution.put(replace, old);
                     gateInput=computeGate(getGateSettings(input, substitution), getGatesInput(input));
                     wrongOutput = getWrongZs(gateInput);
-                    if(wrongOutput.size()!=12)
-                        System.out.println(old+ " "+ replace + " " +wrongOutput.size());
+//                    if(wrongOutput.size()!=12)
+//                        System.out.println(old+ " "+ replace + " " +wrongOutput.size());
                 }
             }
 
