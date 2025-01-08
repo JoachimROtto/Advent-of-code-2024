@@ -46,13 +46,6 @@ public class DayThree extends Day {
         }
     }
 
-    protected String mergeLines(List<String> input){
-        StringBuilder result = new StringBuilder();
-        for (int i = 0; i < input.size(); i++)
-            result.append(input.get(i));
-        return result.toString();
-    }
-
     private String filterInput(String input){
         String[] particles = input.split("don't()");
         StringBuilder result = new StringBuilder(particles[0]);
